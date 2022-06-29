@@ -1,0 +1,43 @@
+.header__container {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav {
+  display: flex;
+  height: inherit;
+}
+
+/* .header__back-btn {
+  margin: 10px 0 10px 10px;
+  height: 50px;
+  align-self: center;
+} */
+
+.header__nav-menu {
+  display: flex;
+  height: inherit;
+}
+
+.header__nav-menu-item {
+  width: '1%';
+  margin: auto 20px;
+}
+
+.header__link {
+  color: white;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  background-color: wheat;
+  color: black;
+  text-decoration: underline;
+}
