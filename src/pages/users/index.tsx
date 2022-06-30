@@ -8,7 +8,7 @@ import UserCard from '@/components/UserCard/UserCard';
 
 import { UserType } from '@/utils/types';
 
-const Users: NextPage<{ users: UserType[] }> = ({ users }) => {
+const Users: NextPage<{ users: UserType[], count: number }> = ({ users, count }) => {
 
   return (
     <CoreLayout title="Users">
@@ -22,7 +22,7 @@ const Users: NextPage<{ users: UserType[] }> = ({ users }) => {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch('http://localhost:4000/api/users/');
+  const res = await fetch('http://localhost:4000/api/users/?page=1&perPage=12');
 
   const { data } = await res.json();
 
