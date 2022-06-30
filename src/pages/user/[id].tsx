@@ -17,8 +17,10 @@ const User: NextPage<{ user: UserType, error: Record<string, unknown> }> = ({ us
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users: UserType[] = await res.json();
+  const res = await fetch('http://localhost:4000/api/users/');
+  const users: UserType[] = await res.json().then((res) => res.data.list);
+
+
   const paths = users.map((user) => ({
     params: { id: String(user.id) },
   }));
@@ -48,8 +50,6 @@ export const getStaticProps: GetStaticProps<{ data: { user: UserType, } | null, 
       },
     }
   }
-
-  console.log(data.user)
 
   return {
     props: {

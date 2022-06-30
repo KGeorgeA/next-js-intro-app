@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import CoreLayout from 'src/layouts/Core';
 import type { UserType } from '@/utils/types';
 import UserCard from '../../components/UserCard/UserCard';
@@ -21,13 +21,12 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ data, error }) => {
   )
 }
 
-export const getStaticProps = async ({ userId }: { userId: number }) => {
-  // const res = await fetch(`http://localhost:4000/api/users/${userId}`).catch((err)=> console.log(err));
-  const res = await fetch('http://localhost:4000/api/users/1', {
+export const getStaticProps = async (context) => {
+  const res = await fetch(`http://localhost:4000/api/users/${context.userId}`, {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Accept': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NjU4NzgzNCwiZXhwIjoxNjU2NzYwNjM0fQ.b0yfs-v3gJE41uo59s2FGSyUXwq2E-x2Ybur56sxQtA'
+      'Authorization': `Bearer ${accesToken}`
     }
   });
 
